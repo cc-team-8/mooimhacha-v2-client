@@ -1,4 +1,4 @@
-import type { AgendaItem } from "@/hooks/useAgendaBuilder";
+import type { AgendaItem } from "@/features/meeting/model/useAgendaBuilder";
 
 interface AgendaBuilderFieldProps {
   list: AgendaItem[];

@@ -5,7 +5,10 @@ import { useToast } from "@/hooks/useToast";
 import ConfirmModal from "@/components/ConfirmModal";
 import HeadsetGateModal from "@/components/HeadsetGateModal";
 import { apiGet, apiPost, apiPatch, apiDelete } from "@/lib/api";
-import { openCompanion, createCompanionChannel } from "@/lib/companion";
+import {
+  openCompanion,
+  createCompanionChannel,
+} from "@/features/meeting/model/companion";
 import { connectTeamSocket, joinTeam, leaveTeam } from "@/lib/ws";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import {
@@ -27,7 +30,7 @@ import DecisionModal from "./modals/DecisionModal";
 import AbsenceModal from "./modals/AbsenceModal";
 import DeleteMeetingModal from "./modals/DeleteMeetingModal";
 import AgendaModal from "./modals/AgendaModal";
-import { ATT_BADGE } from "./attendanceBadge";
+import { ATT_BADGE } from "@/features/meeting/model/attendanceBadge";
 import type {
   ActionItem,
   Agenda,
@@ -40,7 +43,7 @@ import type {
   Transcript,
   TeamSettings,
 } from "@/lib/types";
-import type { TeamContext } from "../DashboardPage";
+import type { TeamContext } from "@/pages/dashboard/DashboardPage";
 import { todayStr, nowTimeStr } from "@/lib/dateUtils";
 
 type Tab =

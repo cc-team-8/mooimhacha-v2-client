@@ -55,7 +55,7 @@ vi.mock("@/lib/ws", () => ({
   joinTeam: vi.fn(),
   leaveTeam: vi.fn(),
 }));
-vi.mock("@/lib/companion", () => ({
+vi.mock("@/features/meeting/model/companion", () => ({
   createCompanionChannel: () => ({
     postMessage: vi.fn(),
     close: vi.fn(),
@@ -71,7 +71,7 @@ vi.mock("@/lib/api", () => ({
 }));
 
 import { apiGet } from "@/lib/api";
-import MeetingPage from "@/pages/dashboard/meeting/MeetingPage";
+import MeetingPage from "@/features/meeting/management/MeetingPage";
 
 beforeEach(() => {
   vi.clearAllMocks();

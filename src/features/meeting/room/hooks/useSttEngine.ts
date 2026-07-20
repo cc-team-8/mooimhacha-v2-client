@@ -8,7 +8,10 @@ import {
   reportAnomaly,
 } from "@/lib/ws";
 import { isSpeechSupported } from "@/lib/speech";
-import { createSttEngine, type SttEngine } from "@/lib/stt-engine";
+import {
+  createSttEngine,
+  type SttEngine,
+} from "@/features/meeting/api/stt-engine";
 
 interface UseSttEngineParams {
   meetingId: number;

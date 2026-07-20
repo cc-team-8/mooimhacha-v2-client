@@ -1,6 +1,6 @@
 import Modal from "@/components/Modal";
 import { todayStr, timeMinForDate } from "@/lib/dateUtils";
-import type { AgendaItem } from "@/hooks/useAgendaBuilder";
+import type { AgendaItem } from "@/features/meeting/model/useAgendaBuilder";
 import AgendaBuilderField from "./AgendaBuilderField";
 
 interface NewMeetingModalProps {

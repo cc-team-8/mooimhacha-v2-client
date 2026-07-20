@@ -1,7 +1,7 @@
 // 홈·대시보드 개요·회의 관리에서 회의를 시작/참여하는 공용 진입 로직.
 // MeetingLauncher의 startMeeting과 동일한 흐름 (scheduled → start 후 보조 창).
 import { apiPost } from "@/lib/api";
-import { openCompanion } from "@/lib/companion";
+import { openCompanion } from "./companion";
 import type { Meeting } from "@/lib/types";
 
 // 시작 API await 뒤의 window.open은 user gesture를 잃어 차단될 수 있다.

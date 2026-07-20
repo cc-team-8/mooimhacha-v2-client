@@ -14,16 +14,11 @@ import { getUser } from "@/lib/auth";
 import { avatarBg } from "@/lib/avatarColor";
 import { apiFetch, authHeader } from "@/lib/apiFetch";
 import { apiGet } from "@/lib/api";
-import { createCompanionChannel } from "@/lib/companion";
+import { createCompanionChannel, MeetingPage } from "@/features/meeting";
 import { useTourStore } from "@/stores/tourStore";
 import { makeDashboardSteps } from "@/components/tour/steps";
-import type {
-  ActionItem,
-  Meeting,
-  AttendanceSummary,
-} from "@/lib/types";
+import type { ActionItem, Meeting, AttendanceSummary } from "@/lib/types";
 import OverviewPage from "./overview/OverviewPage";
-import MeetingPage from "./meeting/MeetingPage";
 import TasksPage from "./tasks/TasksPage";
 import ReportPage from "./report/ReportPage";
 import SettingsPage from "./settings/SettingsPage";
@@ -232,8 +227,7 @@ export default function DashboardPage() {
           className={`nav-item ${current === "settings" ? "active" : ""}`}
           onClick={() => navigate(`/dashboard/${teamId}/settings`)}
         >
-          <i className="ti ti-settings" />
-          팀 설정
+          <i className="ti ti-settings" />팀 설정
         </div>
         <div className="sb-user">
           <div className="av av-md" style={{ background: avatarBg(myIdx) }}>

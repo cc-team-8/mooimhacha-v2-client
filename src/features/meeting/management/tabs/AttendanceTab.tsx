@@ -1,6 +1,6 @@
 import { avatarBg } from "@/lib/avatarColor";
 import type { Meeting, MeetingAttendance, TeamSettings } from "@/lib/types";
-import { ATT_BADGE } from "../attendanceBadge";
+import { ATT_BADGE } from "@/features/meeting/model/attendanceBadge";
 
 interface AttendanceTabProps {
   teamSettings: TeamSettings | null;

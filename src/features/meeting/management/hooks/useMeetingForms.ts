@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { todayStr, nowTimeStr } from "@/lib/dateUtils";
-import { useAgendaBuilder } from "@/hooks/useAgendaBuilder";
+import { useAgendaBuilder } from "@/features/meeting/model/useAgendaBuilder";
 import type { ActionItem } from "@/lib/types";
 
 // MeetingPage의 모달 폼 상태를 도메인별 훅으로 분리한다.

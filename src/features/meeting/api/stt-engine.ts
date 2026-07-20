@@ -1,8 +1,8 @@
 // 렌더러 STT 엔진 추상화.
 // 환경에 따라 WebSttEngine(Web Speech API) 또는 LocalSttEngine(Electron RealtimeSTT 사이드카)을 만든다.
 // speech.ts 는 import 만 하고 수정하지 않는다(웹 빌드 무수정 보장).
-import { createSpeechRecognizer } from "./speech";
-import type { SpeechController } from "./speech";
+import { createSpeechRecognizer } from "@/lib/speech";
+import type { SpeechController } from "@/lib/speech";
 
 // 엔진 공통 핸들러. final 만 필수, 나머지는 선택.
 export interface SttEngineHandlers {

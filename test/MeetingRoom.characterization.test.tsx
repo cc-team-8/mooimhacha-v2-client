@@ -56,8 +56,10 @@ vi.mock("@/lib/ws", () => ({
   reportAnomaly: vi.fn(),
 }));
 vi.mock("@/lib/speech", () => ({ isSpeechSupported: () => true }));
-vi.mock("@/lib/stt-engine", () => ({ createSttEngine: () => h.engine }));
-vi.mock("@/lib/companion", () => ({
+vi.mock("@/features/meeting/api/stt-engine", () => ({
+  createSttEngine: () => h.engine,
+}));
+vi.mock("@/features/meeting/model/companion", () => ({
   createCompanionChannel: () => ({
     postMessage: vi.fn(),
     close: vi.fn(),
@@ -72,7 +74,7 @@ vi.mock("@/lib/api", () => ({
 
 import { apiGet } from "@/lib/api";
 import { sendUtterance, speakingStart } from "@/lib/ws";
-import MeetingRoom from "@/pages/meeting/MeetingRoom";
+import MeetingRoom from "@/features/meeting/room/MeetingRoom";
 
 const MEETING = {
   id: 1,

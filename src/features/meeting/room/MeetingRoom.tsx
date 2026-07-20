@@ -10,7 +10,7 @@ import {
   type ContributionScoreLive,
 } from "@/lib/ws";
 import { apiGet, apiPost } from "@/lib/api";
-import { createCompanionChannel } from "@/lib/companion";
+import { createCompanionChannel } from "@/features/meeting/model/companion";
 import type {
   Agenda,
   Decision,
@@ -18,12 +18,12 @@ import type {
   Meeting,
   TeamMember,
 } from "@/lib/types";
-import AgendaTracker from "./AgendaTracker";
-import ContributionBar from "./ContributionBar";
-import QuickInput from "./QuickInput";
-import RoomHeader from "./RoomHeader";
-import RoomBanners from "./RoomBanners";
-import RecentItems from "./RecentItems";
+import AgendaTracker from "./components/AgendaTracker";
+import ContributionBar from "./components/ContributionBar";
+import QuickInput from "./components/QuickInput";
+import RoomHeader from "./components/RoomHeader";
+import RoomBanners from "./components/RoomBanners";
+import RecentItems from "./components/RecentItems";
 
 interface Props {
   meetingId: number;

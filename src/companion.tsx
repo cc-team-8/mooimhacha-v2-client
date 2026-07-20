@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import MeetingRoom from "@/pages/meeting/MeetingRoom";
+import { MeetingRoom } from "@/features/meeting";
 import "@/styles/global.css";
 import "@/styles/companion.css";
 
