@@ -43,10 +43,11 @@ UI 라이브러리는 쓰지 않는다. **Plain CSS + CSS 커스텀 프로퍼티
 │   ├── main.tsx            앱 진입점 (BrowserRouter)
 │   ├── App.tsx             최상위 라우터
 │   ├── companion.tsx       보조 창 진입점
-│   ├── pages/              페이지 (login, onboarding, home, dashboard, meeting …)
+│   ├── pages/              라우트 단위 페이지 (login, onboarding, home, dashboard …)
+│   ├── features/           도메인 기능 단위 (예: meeting — 회의룸·관리·모델·api)
 │   ├── components/         공용 컴포넌트 (Card, Modal 등)
-│   ├── lib/                API 호출·WebSocket·STT 등 로직 계층
-│   ├── hooks/              커스텀 훅
+│   ├── lib/                공용 로직 계층 (API 호출·WebSocket·인증 등)
+│   ├── hooks/              공용 커스텀 훅
 │   ├── stores/             Zustand 스토어
 │   └── styles/             전역·페이지별 CSS
 ├── public/                 정적 자산
