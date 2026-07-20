@@ -39,3 +39,4 @@ test/*.png
 
 # 로컬 Claude Code 설정 (레포에 커밋하지 않음)
 .claude/
+CLAUDE.md
