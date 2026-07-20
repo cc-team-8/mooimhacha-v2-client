@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(timeout 240 npx vitest run test/MeetingPage.characterization.test.tsx --reporter=verbose --no-file-parallelism --test-timeout=6000 --bail=1)",
-      "Bash(echo \"exit: $?\")",
-      "Read(//tmp/**)"
-    ]
-  }
-}

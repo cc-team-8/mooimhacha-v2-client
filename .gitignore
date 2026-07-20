@@ -35,5 +35,7 @@ yarn.lock
 test/screenshots/
 test/*.png
 
-
 .env*
+
+# 로컬 Claude Code 설정 (레포에 커밋하지 않음)
+.claude/
