@@ -1,0 +1,633 @@
+/* 동료평가 페이지 — 안내 → 100점 배분 → 무임승차 지목 → 자유서술 → 완료 */
+
+.pr-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 64px;
+}
+
+.pr-shell {
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ── 진행 표시 ─────────────────────────────── */
+.pr-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.pr-progress-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--track);
+  overflow: hidden;
+}
+
+.pr-progress-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--green);
+  transition: width 0.25s ease;
+}
+
+.pr-progress-lab {
+  font-size: 12px;
+  color: var(--text-mut);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 공통 ─────────────────────────────────── */
+.pr-step {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pr-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--green);
+}
+
+.pr-title {
+  font-family: var(--font-display);
+  font-size: 27px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.pr-q {
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.pr-lead,
+.pr-sub {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.pr-note {
+  font-size: 13px;
+  color: var(--text-mut);
+  margin: 0;
+}
+
+.pr-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.pr-btn-lg {
+  padding: 11px 20px;
+  font-size: 14.5px;
+}
+
+/* ── 안내: 정직성 계약 ─────────────────────── */
+.pr-pact {
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-left: 3px solid var(--green);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pr-pact-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pr-pact-head i {
+  color: var(--green);
+}
+
+.pr-pact-body {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.pr-pact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pr-pact-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+
+.pr-pact-list i {
+  color: var(--text-mut);
+  font-size: 15px;
+}
+
+/* ── 배분 ─────────────────────────────────── */
+.pr-hint {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: var(--amber-soft);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-soft);
+}
+
+.pr-hint i {
+  color: var(--amber);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.pr-alloc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pr-alloc-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "who input"
+    "bar input";
+  align-items: center;
+  gap: 6px 12px;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+}
+
+.pr-alloc-who {
+  grid-area: who;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.pr-alloc-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pr-me {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--green-soft);
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+/* 균등선(50%)을 기준으로 막대가 좌우로 자란다 */
+.pr-alloc-bar {
+  grid-area: bar;
+  position: relative;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--track);
+  overflow: hidden;
+}
+
+.pr-alloc-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.15s ease;
+}
+
+.pr-alloc-even {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 50%;
+  width: 1px;
+  background: var(--text-mut);
+  opacity: 0.5;
+}
+
+.pr-alloc-input {
+  grid-area: input;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pr-step-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-2);
+  background: var(--surface);
+  color: var(--text-soft);
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pr-step-btn:hover:not(:disabled) {
+  background: var(--surface-3);
+  color: var(--text);
+}
+
+.pr-step-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pr-num {
+  width: 58px;
+  text-align: center;
+  padding: 6px 4px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+/* 숫자 입력 스피너 숨김 — 우리 +/- 버튼을 쓴다 */
+.pr-num::-webkit-outer-spin-button,
+.pr-num::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pr-num {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.pr-total {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--coral-soft);
+  border: 1px solid var(--coral);
+}
+
+.pr-total.ok {
+  background: var(--green-soft);
+  border-color: var(--green);
+}
+
+.pr-total-lab {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.pr-total-val {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--coral);
+  font-variant-numeric: tabular-nums;
+}
+
+.pr-total.ok .pr-total-val {
+  color: var(--green);
+}
+
+.pr-total-of {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mut);
+}
+
+.pr-total-msg {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--coral);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pr-total.ok .pr-total-msg {
+  color: var(--green);
+}
+
+.pr-alloc-tools {
+  display: flex;
+  gap: 6px;
+}
+
+/* ── 무임승차 지목 ─────────────────────────── */
+.pr-guard {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  background: var(--surface-2);
+  border: 1px dashed var(--border-2);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.pr-guard i {
+  color: var(--text-mut);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.pr-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pr-choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  font-size: 14.5px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pr-choice:hover {
+  background: var(--surface-3);
+}
+
+.pr-choice i {
+  font-size: 17px;
+  color: var(--text-mut);
+}
+
+.pr-choice.sel {
+  border-color: var(--green);
+  background: var(--green-soft);
+  font-weight: 600;
+}
+
+.pr-choice.sel i {
+  color: var(--green);
+}
+
+.pr-followup {
+  padding: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+}
+
+.pr-followup-lab {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+
+.pr-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pr-target {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px 7px 7px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.pr-target:hover {
+  background: var(--surface-3);
+}
+
+.pr-target.sel {
+  border-color: var(--coral);
+  background: var(--coral-soft);
+  font-weight: 600;
+}
+
+.pr-target-ck {
+  color: var(--coral);
+  font-size: 14px;
+}
+
+.pr-phenos {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pr-pheno {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13.5px;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pr-pheno:hover {
+  background: var(--surface-3);
+}
+
+.pr-pheno.sel {
+  border-color: var(--green);
+  font-weight: 600;
+}
+
+.pr-check {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  font-size: 12px;
+  color: var(--surface);
+}
+
+.pr-pheno.sel .pr-check {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--surface);
+}
+
+/* ── 자유 서술 ────────────────────────────── */
+.pr-textarea {
+  width: 100%;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ── 완료 ─────────────────────────────────── */
+.pr-done {
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.pr-done-mark {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 30px;
+  margin-bottom: 4px;
+}
+
+.pr-done .pr-actions {
+  justify-content: center;
+}
+
+.pr-result {
+  width: 100%;
+  margin-top: 10px;
+  padding: 22px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.pr-result-lab {
+  font-size: 12.5px;
+  color: var(--text-soft);
+}
+
+.pr-result-val {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+}
+
+.pr-result-unit {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-mut);
+  margin-left: 2px;
+}
+
+.pr-result-diff {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.pr-result-diff.up {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.pr-result-diff.down {
+  background: var(--coral-soft);
+  color: var(--coral);
+}
+
+.pr-result-note {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--text-mut);
+}
+
+/* ── 모바일 ───────────────────────────────── */
+@media (max-width: 480px) {
+  .pr-alloc-row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "who"
+      "input"
+      "bar";
+    gap: 10px;
+  }
+
+  .pr-alloc-input {
+    justify-content: space-between;
+  }
+
+  .pr-num {
+    flex: 1;
+  }
+
+  .pr-title {
+    font-size: 23px;
+  }
+}
